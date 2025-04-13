@@ -4,9 +4,8 @@ import bcrypt from "bcryptjs";
 import connectToDatabase from "@/lib/mongodb";
 import User from "@/models/User";
 import ServiceProvider from "@/models/ServiceProvider";
-import { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -21,14 +20,12 @@ export const authOptions: NextAuthOptions = {
 
         await connectToDatabase();
 
-        // Find user by email
         const user = await User.findOne({ email: credentials.email });
 
         if (!user) {
           throw new Error("No user found with this email");
         }
 
-        // Check password
         const isPasswordValid = await bcrypt.compare(
           credentials.password,
           user.password
@@ -38,7 +35,6 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid password");
         }
 
-        // If user is a provider, get provider profile
         let providerProfile = null;
         if (user.role === "provider") {
           providerProfile = await ServiceProvider.findOne({
@@ -51,11 +47,13 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           role: user.role,
-          providerProfile: providerProfile ? {
-            id: providerProfile._id.toString(),
-            serviceType: providerProfile.serviceType,
-            verified: providerProfile.verified,
-          } : null,
+          providerProfile: providerProfile
+            ? {
+                id: providerProfile._id.toString(),
+                serviceType: providerProfile.serviceType,
+                verified: providerProfile.verified,
+              }
+            : null,
         };
       },
     }),
@@ -85,8 +83,6 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
-};
-
-const handler = NextAuth(authOptions);
+});
 
 export { handler as GET, handler as POST };
