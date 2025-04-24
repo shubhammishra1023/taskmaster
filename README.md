@@ -43,18 +43,60 @@ Service Connect is a web application designed to bridge the gap between consumer
 ### Prerequisites
 - **Node.js** v14+ and npm
 - **Git** installed
-- **MongoDB** (local or Atlas) or **PostgreSQL** instance
+- **MongoDB** (local or Atlas) 
 
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/shubhammishra1023/service-connect.git
-cd service-connect
+git clone https://github.com/shubhammishra1023/taskmaster.git
+cd taskmaster
 
-# Install frontend dependencies
-cd frontend
-npm install
+# Install all the required dependencies
+npm install lucide-react @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-label @radix-ui/react-radio-group @radix-ui/react-select @radix-ui/react-tabs class-variance-authority clsx tailwindcss-animate sooner
+npm install mongoose bcryptjs next-auth
+npx shadcn@latest add button input label avatar sheet dropdown-menu tabs checkbox radio-group select
 
-# Install backend dependencies
-cd ../backend
-npm install
+###Configuration
+Create a `.env` file in the `backend` directory:
+~~~env
+MONGODB_URI=your_mongodb_connection_string
+NEXTAUTH_SECRET=your_nextauth_secret_key
+NEXTAUTH_URL=http://localhost:3000
+~~~
+(Optional) Configure email service credentials for notifications.
+
+### Running the Application
+~~~bash
+# Start
+npm run dev
+~~~
+Open http://localhost:3000 to explore the app.
+
+## Usage
+1. Sign up as a Consumer or Service Provider.
+2. Browse providers by category or search bar.
+3. View profile, message, and negotiate pricing.
+4. Book service and review after completion.
+5. Track booking history and upcoming services.
+
+## Contributing
+~~~bash
+# Fork the repo and create a feature branch
+git checkout -b feature/YourFeatureName
+
+# Commit your changes
+git commit -m "Add some feature"
+
+# Push and open a PR
+git push origin feature/YourFeatureName
+~~~
+Please ensure code style consistency and include tests.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+- **Project Maintainer**: Shubham Mishra
+- **GitHub**: [shubhammishra1023](https://github.com/shubhammishra1023)
+- **Email**: shubhammishra.commercial581@gmail.com
+~~~
