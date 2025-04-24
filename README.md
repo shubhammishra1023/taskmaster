@@ -1,4 +1,4 @@
-# Service Connect
+# TaskMaster
 
 **A platform for connecting consumers directly with local service providers.**
 
@@ -34,7 +34,7 @@ Service Connect is a web application designed to bridge the gap between consumer
 - **Frontend**: Next.js, React, Tailwind CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB (or PostgreSQL)
-- **Authentication**: JWT or OAuth
+- **Authentication**: JWT or nextAuth
 - **Real-time**: Socket.io (for messaging)
 - **Deployment**: Vercel (frontend), Heroku/DigitalOcean/AWS (backend)
 
@@ -46,17 +46,16 @@ Service Connect is a web application designed to bridge the gap between consumer
 - **MongoDB** (local or Atlas) 
 
 ### Installation
-```bash
 # Clone the repository
 git clone https://github.com/shubhammishra1023/taskmaster.git
 cd taskmaster
 
-# Install all the required dependencies
+### Install all the required dependencies
 npm install lucide-react @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-label @radix-ui/react-radio-group @radix-ui/react-select @radix-ui/react-tabs class-variance-authority clsx tailwindcss-animate sooner
 npm install mongoose bcryptjs next-auth
 npx shadcn@latest add button input label avatar sheet dropdown-menu tabs checkbox radio-group select
 
-###Configuration
+### Configuration
 Create a `.env` file in the `backend` directory:
 ~~~env
 MONGODB_URI=your_mongodb_connection_string
@@ -80,7 +79,6 @@ Open http://localhost:3000 to explore the app.
 5. Track booking history and upcoming services.
 
 ## Contributing
-~~~bash
 # Fork the repo and create a feature branch
 git checkout -b feature/YourFeatureName
 
@@ -89,7 +87,7 @@ git commit -m "Add some feature"
 
 # Push and open a PR
 git push origin feature/YourFeatureName
-~~~
+
 Please ensure code style consistency and include tests.
 
 ## License
@@ -99,4 +97,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Project Maintainer**: Shubham Mishra
 - **GitHub**: [shubhammishra1023](https://github.com/shubhammishra1023)
 - **Email**: shubhammishra.commercial581@gmail.com
-~~~
+
